@@ -24,11 +24,15 @@ exports.findByName = function(req, res) {
 	var collection = db.collection('MotorFinance');
 	var name = req.params.name;
 	var dealerNo = req.params.dealerNo;
+	var goodsCode = req.params.goodsCode
+	console.log(dealerNo+goodsCode)
+	//var query = { "dealerNo": dealerNo , "goodsCode": goodsCode};
 	/*var goodsCode = req.params.goodsCode;
 	var scheme = req.params.scheme;
 	var dor = req.params.dor;*/
-	collection.findOne({
-		'dealerNo': dealerNo
+	collection.findOne({'dealerNo': dealerNo , "goodsCode": goodsCode
+	//, "goodsCode": goodsCode
+		//'dealerNo': dealerNo
 		/*,
 		'goodsCode': goodsCode,
 		'scheme': scheme,
@@ -51,7 +55,6 @@ exports.createMFinance = function(req, res) {
 	var db = req.db;
 	var collection = db.collection('MotorFinance');
 	var post = req.body;
-	//var myobj = { name: "Company Inc", address: "Highway 37" };
 	console.log(post);
 	collection.insert(post, {
 		safe: true
