@@ -1,6 +1,11 @@
 # MotorFinance
 MotorFinance_REST Service
 
+Prerequisites:
+
+Install mongoDB in the local machine
+Install nodeJs
+
 Download the repository 
 
 execute npm -i on the repository
