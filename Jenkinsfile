@@ -13,7 +13,9 @@ pipeline {
         }
        stage('Deploy') {
             steps {
-                sh 'npm run start'
+                sh '''export JENKINS_NODE_COOKIE=dontKillMe
+nohup npm run start &
+'''
             }
         }
     }
