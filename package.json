@@ -19,8 +19,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC"
