@@ -19,7 +19,7 @@ var MongoClient = require('mongodb').MongoClient;
 var db;
 
 // setup mongo connection
-MongoClient.connect('mongodb://127.0.0.1:27017/mydb', function(err, database) {
+MongoClient.connect('mongodb://amirthaganesanr:Ganesh12@firstcluster-shard-00-00-ehib9.mongodb.net:27017,firstcluster-shard-00-01-ehib9.mongodb.net:27017,firstcluster-shard-00-02-ehib9.mongodb.net:27017/test?ssl=true&replicaSet=FirstCluster-shard-0&authSource=admin&retryWrites=true/MotorFinance', function(err, database) {
 	if (err) {
 		throw err;
 	}
@@ -31,6 +31,8 @@ MongoClient.connect('mongodb://127.0.0.1:27017/mydb', function(err, database) {
 
 // make our db accessible to our router
 app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	req.db = db;
 	next();
 });
@@ -60,11 +62,12 @@ if ('development' == app.get('env')) {
 
 // routes
 app.get('/', dbmod.homeMFinance);
-app.get('/retrieve/:dealerNo', dbmod.findByName);
+app.get('/retrieve/:dealerNo/:goodsCode', dbmod.findByName);
 app.post('/create', dbmod.createMFinance);
-//app.post('/update', routes.updateDog);
-//app.post('/delete', routes.deleteDog);
+//app.post('/update', routes.updateMFinance);
+//app.post('/delete', routes.deleteMFinance);
 
 app.listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
 });
+
