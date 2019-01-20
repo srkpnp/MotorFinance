@@ -31,3 +31,6 @@ first argument is "dealerNo" and second argument is "goodsCode"
 http://localhost:3000/retrieve/1234568/56
 
 Please replace the sever hostname and port number
+
+WEBHOOK URL
+http://35.176.87.139:8080/github-webhook/
