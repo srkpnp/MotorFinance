@@ -1,6 +1,8 @@
 //Display Available Motor Finance
 exports.homeMFinance = function(req, res) {
 	var db = req.db;
+	res.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	var collection = db.collection('MotorFinanceRef');
 	collection.find().toArray(function(err, motorFinanceArray) {
 		if (motorFinanceArray) {
@@ -55,6 +57,8 @@ exports.findByName = function(req, res) {
 exports.createMFinance = function(req, res) {
 	var db = req.db;
 	var collection = db.collection('MotorFinance');
+	res.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	var post = req.body;
 	if(post){
 	//var rq = JSON.parse(post)
