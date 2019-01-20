@@ -13,7 +13,7 @@ pipeline {
         }
        stage('Deploy') {
             steps {
-                sh '''kill $(ps aux | grep 'app.js' | awk '{print $2}')
+                sh '''kill $(ps aux | grep 'app.js' | awk '{print $2}') || true
                 export JENKINS_NODE_COOKIE=dontKillMe
 nohup npm run start &
 '''
