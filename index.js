@@ -1,9 +1,7 @@
-
-
-// Display Available Motor Finance
+//Display Available Motor Finance
 exports.homeMFinance = function(req, res) {
 	var db = req.db;
-	var collection = db.collection('MotorFinance');
+	var collection = db.collection('MotorFinanceRef');
 	collection.find().toArray(function(err, motorFinanceArray) {
 		if (motorFinanceArray) {
 			console.log(motorFinanceArray)
@@ -21,7 +19,7 @@ exports.homeMFinance = function(req, res) {
 // Search for requested Motor Finance
 exports.findByName = function(req, res) {
 	var db = req.db;
-	var collection = db.collection('MotorFinance');
+	var collection = db.collection('MotorFinanceRef');
 	var name = req.params.name;
 	var dealerNo = req.params.dealerNo;
 	var goodsCode = req.params.goodsCode
@@ -40,7 +38,13 @@ exports.findByName = function(req, res) {
 		
 	}, function(err, item) {
 		if (item) {
+			console.log(item)
+			if(item){
 			res.send(item);
+			}else{
+				res.send("No PRODUCT available");
+			
+			}
 			
 		}
 		else {
@@ -53,7 +57,7 @@ exports.findByName = function(req, res) {
 // create a Motor Finance Search Entry
 exports.createMFinance = function(req, res) {
 	var db = req.db;
-	var collection = db.collection('MotorFinance');
+	var collection = db.collection('MotorFinanceRef');
 	var post = req.body;
 	console.log(post);
 	collection.insert(post, {
@@ -65,8 +69,9 @@ exports.createMFinance = function(req, res) {
 			});
 		}
 		else {
-			res.redirect("/");
+			console.log(post.dealerNo)
+			console.log(post.goodsCode)
+			res.redirect("/retrieve/"+post.dealerNo+"/"+post.goodsCode);
 		}
 	});
 };
-
