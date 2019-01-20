@@ -6,6 +6,8 @@ Prerequisites:
 Install mongoDB in the local machine
 Install nodeJs
 
+Test
+
 Download the repository 
 
 execute npm -i on the repository
