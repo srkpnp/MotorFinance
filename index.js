@@ -23,6 +23,8 @@ exports.findByName = function(req, res) {
 	var name = req.params.name;
 	var dealerNo = req.params.dealerNo;
 	var goodsCode = req.params.goodsCode
+		res.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	console.log(dealerNo+goodsCode)
 	//var query = { "dealerNo": dealerNo , "goodsCode": goodsCode};
 	/*var goodsCode = req.params.goodsCode;
