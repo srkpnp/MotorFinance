@@ -39,18 +39,12 @@ exports.findByName = function(req, res) {
 	}, function(err, item) {
 		if (item) {
 			console.log(item)
-			if(item){
 			res.send(item);
-			}else{
-				res.redirect("/");
-			
-			}
-			
 		}
 		else {
 			res.redirect("/");
-			/*res.send('Finance Options are Not Found'
-			);*/
+			//res.send('Finance Options are Not Found'
+			//);
 		}
 	});
 };
@@ -60,7 +54,9 @@ exports.createMFinance = function(req, res) {
 	var db = req.db;
 	var collection = db.collection('MotorFinance');
 	var post = req.body;
-	console.log(post);
+	if(post){
+	//var rq = JSON.parse(post)
+	console.log("========>"+post);
 	collection.insert(post, {
 		safe: true
 	}, function(error, result) {
@@ -75,4 +71,8 @@ exports.createMFinance = function(req, res) {
 			res.redirect("/retrieve/"+post.dealerNo+"/"+post.goodsCode);
 		}
 	});
+}else{
+	res.redirect("/");
+}
+
 };
