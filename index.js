@@ -42,14 +42,15 @@ exports.findByName = function(req, res) {
 			if(item){
 			res.send(item);
 			}else{
-				res.send("No PRODUCT available");
+				res.redirect("/");
 			
 			}
 			
 		}
 		else {
-			res.send('Finance Options are Not Found'
-			);
+			res.redirect("/");
+			/*res.send('Finance Options are Not Found'
+			);*/
 		}
 	});
 };
@@ -57,7 +58,7 @@ exports.findByName = function(req, res) {
 // create a Motor Finance Search Entry
 exports.createMFinance = function(req, res) {
 	var db = req.db;
-	var collection = db.collection('MotorFinanceRef');
+	var collection = db.collection('MotorFinance');
 	var post = req.body;
 	console.log(post);
 	collection.insert(post, {
